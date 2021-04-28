@@ -14,18 +14,6 @@ class Product
 
   attr_accessor :name, :color, :use, :price
 
-  def name
-    @name
-  end
-
-  def price
-    @price
-  end
-
-  def price=(new_price)
-    @price = new_price
-  end
-
   def print_info
     puts "Product Name: #{name}, Color: #{color}, Uses: #{use}, Price: #{price}"
   end
