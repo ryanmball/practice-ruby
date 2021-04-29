@@ -5,11 +5,11 @@ puts "Welcome to Ryan's climbing and outdoor store!"
 
 class Product
 
-  def initialize(name, color, use, price)
-    @name = name
-    @color = color
-    @use = use
-    @price = price
+  def initialize(inputs)
+    @name = inputs[:name]
+    @color = inputs[:color]
+    @use = inputs[:use]
+    @price = inputs[:price]
   end
 
   attr_accessor :name, :color, :use, :price
@@ -20,9 +20,9 @@ class Product
 
 end
 
-product1 = Product.new("BD Camalot 0.75", "green", "trad", 69.95)
-product2 = Product.new("Mammut Infinity Dry 9.5mm", "pink", "all", 280.00)
-product3 = Product.new("BD Hotforged Hybrid QD", "blue", "sport", 17.95)
+product1 = Product.new(name: "BD Camalot 0.75", color: "green", use: "trad", price: 69.95)
+product2 = Product.new(name: "Mammut Infinity Dry 9.5mm", color: "pink", use: "all", price: 280.00)
+product3 = Product.new(name: "BD Hotforged Hybrid QD", color: "blue", use: "sport", price: 17.95)
 
 product1.print_info
 product2.print_info
