@@ -1,5 +1,5 @@
 class Transportation
-  def initialize
+  def initialize(*)
     @speed = 0
     @direction = 'north'
   end
@@ -18,19 +18,37 @@ class Transportation
 end
 
 class Car < Transportation
+  def initialize(options_hash)
+    super
+    @make = options_hash[:make] || "Toyota"
+    @model = options_hash[:model] || "4Runner"
+    @year = options_hash[:year] || 2020
+    @color = options_hash[:color] || "black"
+  end
+
+  attr_accessor :make, :model, :year, :color, :speed, :direction
+
   def honk_horn
     puts "Beeeeeeep!"
   end
 end
 
 class Bike < Transportation
+  def initialize(options_hash)
+    super
+    @brand = options_hash[:brand] || "Specialized"
+    @type = options_hash[:type] || "mountain"
+  end
+
+  attr_accessor :brand, :type, :speed, :direction
+
   def ring_bell
     puts "Ring ring!"
   end
 end
 
-car1 = Car.new
-bike1 = Bike.new
+car1 = Car.new({})
+bike1 = Bike.new({})
 p car1
 p bike1
 car1.accelerate
@@ -39,3 +57,10 @@ p car1
 p bike1
 car1.honk_horn
 bike1.ring_bell
+
+car2 = Car.new(make: "Volkswagen", model: "Tiguan", year: 2017, color: "black")
+p car2
+p car2.make
+bike2 = Bike.new(brand: "Santa Cruz", type: "mountain")
+p bike2
+p bike2.type
