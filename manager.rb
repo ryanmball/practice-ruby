@@ -1,7 +1,7 @@
 class Employee
   attr_accessor :first_name, :last_name, :active, :work_quality, :soft_skills, :eligible_for_raise
 
-  def initialize options_hash
+  def initialize(options_hash)
     @first_name = options_hash[:first_name]
     @last_name = options_hash[:last_name]
     @salary = options_hash[:salary]
@@ -30,7 +30,7 @@ end
 class Manager < Employee
   attr_accessor :employees
   
-  def initialize options_hash
+  def initialize(options_hash)
     super
     @employees = options_hash[:employees]
   end
