@@ -143,34 +143,55 @@ end
 
 # ## Object oriented programming practice
 
-# Use the code below to answer the following questions.
+class Card
+  def initialize(question_answer)
+    @question_answer = question_answer
+    @question = question_answer.keys[0]
+    @answer = question_answer[@question]
+  end
 
-# ```ruby
-# class Card
-# end
+  attr_reader :question, :answer
+end
 
-# class Deck
-# end
+class Deck
+  def initialize(trivia_questions)
+    @trivia_questions = trivia_questions
+  end
 
-# trivia_data = {
-#   "What is the capital of Illinois?" => "Springfield",
-#   "Is Africa a country or a continent?" => "Continent",
-#   "Tug of war was once an Olympic event. True or false?" => "True"
-# }
+  attr_accessor :trivia_questions
 
-# deck = Deck.new(trivia_data) # deck is an instance of the Deck class
+  def draw_card
+    key = trivia_questions.keys.sample
+    value = trivia_questions[key]
+    trivia_questions.delete(key)
+    return {key => value}
+  end
 
-# while deck.remaining_cards > 0
-#   card = deck.draw_card # card is an instance of the Card class
-#   puts card.question
-#   user_answer = gets.chomp
-#   if user_answer.downcase == card.answer.downcase
-#     puts "Correct!"
-#   else
-#     puts "Incorrect!"
-#   end
-# end
-# ```
+  def remaining_cards
+    return trivia_questions.length
+  end
+end
+
+trivia_data = {
+  "What is the capital of Illinois?" => "Springfield",
+  "Is Africa a country or a continent?" => "Continent",
+  "Tug of war was once an Olympic event. True or false?" => "True"
+}
+
+deck = Deck.new(trivia_data)
+
+while deck.remaining_cards > 0
+  card = Card.new(deck.draw_card)
+  puts "Question:"
+  puts card.question
+  puts "Please input your answer:"
+  user_answer = gets.chomp
+  if user_answer.downcase == card.answer.downcase
+    puts "Correct!"
+  else
+    puts "Incorrect!"
+  end
+end
 
 # 1. Write out the Card and Deck classes to make the program work. The Deck class should hold a list of Card instances. (Do not change any of the existing code for this step!)
 

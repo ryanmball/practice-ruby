@@ -1,1 +1,0 @@
-p Array.new(10) { [*"0".."9"].sample }.join
